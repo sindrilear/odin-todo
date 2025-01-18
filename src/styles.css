@@ -63,6 +63,8 @@ table {
     gap:12px;
     padding: 20px;
     background-color: #021526;
+    flex-shrink: 1;
+    min-width: 100px;
 }
 
 .taskmenu {
@@ -87,9 +89,17 @@ table {
 .alltasksmenu {
     background-color: #180161;
     height: 100%;
-    width: 100%;
     padding: 20px;
     gap: 12px;
+    flex-shrink: 1;
+    min-width: 0;
+    flex: 1;
+}
+
+.taskwrapper {
+    display:flex;
+    gap: 8px;
+    flex-wrap:wrap;
 }
 
 .task {
@@ -99,7 +109,7 @@ table {
     border: 2px solid black;
     padding: 12px;
     background-color:#3C3D37;
-    width: 50%;
+    flex-grow: 1;
 }
 
 .taskheader {
