@@ -1,0 +1,129 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+    height: 100vh;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.pagewrapper {
+    display:flex;
+    height: 100%;
+    width: 100%;
+}
+
+.tasktracker {
+    display:flex;
+    flex-direction:column;
+    height: 100%;
+    width: 20%;
+    gap:12px;
+    padding: 20px;
+    background-color: #021526;
+}
+
+.taskmenu {
+    display:flex;
+    flex-direction:column;
+    gap: 8px;
+}
+
+.taskmenubuttons {
+    display:flex;
+    flex-direction:column;
+    gap: 8px;
+}
+
+.projectmenu {
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+
+.alltasksmenu {
+    background-color: #03346E;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    gap: 12px;
+}
+
+.task {
+    display:flex;
+    flex-direction:column;
+    gap: 6px;
+    border: 2px solid black;
+    padding: 12px;
+    background-color:#006A67;
+    width: 50%;
+}
+
+.taskheader {
+    display:flex;
+    justify-content:space-between;
+    height: 5%;
+    align-items:center;
+}
+
+h3 {
+    color: #FFF4B7;
+    font-size: 24px;
+    border-bottom: 2px solid #FFF4B7;
+    border-style: dotted;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+button {
+    text-align:start;
+    height:20px;
+}
+
+h1, p {
+    color:white;
+}
