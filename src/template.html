@@ -27,9 +27,32 @@
         <div class="alltasksmenu">
             <div class="taskheader">
                 <h1>All tasks</h1>
-                <button type="button" class="addbutton">Add a task</button>
+                <button type="button" id="addbutton" class="addbutton">Add a task</button>
             </div>
             <div class="taskwrapper" id="taskwrapper">
+            </div>
+            <div class="form-popup" id="addtaskform">
+                <form class="addtaskform">
+                    <label for="taskname">Name of task</label>
+                    <input type="text" id="taskname" name="taskname">
+                    <label for="taskdescription">Describe the task</label>
+                    <input type="text" id="taskdescription" name="taskdescription">
+                    <label for="duedate">Due date</label>
+                    <input type="date" id="duedate" name="duedate">
+                    <label>Task priority level</label>
+                    <div class="radiowrapper">
+                        <input type="radio" id="low" name="priority" value="low">
+                        <label for="low">Low</label>
+                        <input type="radio" id="medium" name="priority" value="medium">
+                        <label for="medium">Medium</label>
+                        <input type="radio" id="high" name="priority" value="high">
+                        <label for="high">High</label>
+                    </div>
+                    <div class="formbtnwrapper">
+                        <button type="submit" id="confirmformbtn" class="addbutton">Confirm</button>
+                        <button type="button" id="closeformbtn" class="closebutton">Close</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
