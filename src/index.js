@@ -22,6 +22,21 @@ export function navigateTo(page) {
     sessionStorage.setItem("currentPage", page);
 }
 
+export function addToLocalStorage(array, type) {
+    if (type === "task") {
+    let taskArrayStringified = JSON.stringify(array)
+    localStorage.setItem("Tasks", taskArrayStringified);
+    } else {
+        let projectArrayStringified = JSON.stringify(array);
+        localStorage.setItem("Projects", projectArrayStringified);
+    }
+}
+
+export function deleteElement(array, index, type) {
+    array.splice(index, 1);
+    addToLocalStorage(array, type);
+}
+
 // Global variable for current tasks
 export const tasks = getTasks();
 export const projects = getProjects();
@@ -33,13 +48,19 @@ console.log("SessionStorage Current Page:", sessionStorage.getItem("currentPage"
 console.log("Current Page (state.js):", getCurrentPage());
 console.log(tasks);
 
-// Form handling
+// Buttons
 const taskDialog = document.getElementById("addtaskbutton")
 const closetaskForm = document.getElementById("closetaskformbtn")
 
 const closeprojectForm = document.getElementById("closeprojectformbtn")
 const projectDialog = document.getElementById("addprojectbutton")
-//const projectBtn = document.getElementById("project")
+
+const allTasks = document.getElementById("alltasksbutton")
+allTasks.addEventListener("click", () => {
+    navigateTo("Home");
+    renderTasks(tasks, true);
+    renderProjects(projects);
+})
 
 // Task form
 taskDialog.addEventListener("click", () => {
@@ -58,12 +79,6 @@ projectDialog.addEventListener("click", () => {
 closeprojectForm.addEventListener("click", () =>  {
     document.getElementById("addprojectform").style.display = "none";
 });
-
-// When the project button is pressed, it navigates to that page and renders the tasks for that project
-//projectBtn.addEventListener("click", () => {
-  //  navigateTo("Home");
-   // renderTasks(tasks, false);
-//});
     
 // When add task form confirmation button is pressed, run addTask function
 const taskForm = document.getElementById("addtaskform");
@@ -72,6 +87,7 @@ taskForm.addEventListener('submit', addTask);
 const projectForm = document.getElementById("addprojectform");
 projectForm.addEventListener('submit', addProject);
 
+//Render homepage
 renderTasks(tasks, true);
 renderProjects(projects);
 

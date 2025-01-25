@@ -1,5 +1,5 @@
 import { renderTasks } from "./renderTasks";
-import {  getCurrentPage, tasks } from "."
+import {  getCurrentPage, tasks, addToLocalStorage } from "."
 
 class Task {
     constructor(taskname, taskdescription, duedate, priority) {
@@ -32,8 +32,11 @@ function createTask(taskname, taskdescription, duedate, priority) {
     let currentPage = getCurrentPage();
     createTask.page = currentPage;
     tasks.push(createTask);
-    let taskArrayStringified = JSON.stringify(tasks);
-    console.log(tasks);
-    localStorage.setItem("Tasks", taskArrayStringified);
+
+    addToLocalStorage(tasks, "task");
+    if (currentPage === "Home") {
+        renderTasks(tasks, true)
+    } else {
     renderTasks(tasks);
+    }
 }

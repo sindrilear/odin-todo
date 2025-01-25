@@ -1,4 +1,6 @@
 import { getCurrentPage } from ".";
+import { deleteElement } from ".";
+import { tasks } from ".";
 
 export function renderTasks(taskArray, isHome) {
     const taskwrapper = document.querySelector("#taskwrapper")
@@ -24,6 +26,11 @@ export function renderTasks(taskArray, isHome) {
             tasknamewrapper.appendChild(taskname)
             const deletebutton = document.createElement("button")
             deletebutton.setAttribute("class", "deletebutton");
+            deletebutton.setAttribute("id", "deletebutton");
+            deletebutton.addEventListener("click", (event) => {
+                deleteElement(tasks, i, "task");
+                renderTasks(tasks, true)
+            })
             deletebutton.innerHTML = "X"
             tasknamewrapper.appendChild(deletebutton);
 
