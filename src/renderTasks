@@ -60,6 +60,14 @@ export function renderTasks(taskArray, isHome) {
             checkboxlabel.innerHTML = "This task has been completed"
             checkboxdiv.appendChild(checkbox)
             checkboxdiv.appendChild(checkboxlabel)
+            checkbox.addEventListener("change", () => {
+                if (checkbox.checked) {
+                    taskdiv.style.backgroundColor = "green";
+                } else {
+                    taskdiv.style.backgroundColor = "#3C3D37";
+                }
+            })
+
             const editbutton = document.createElement("button")
             editbutton.setAttribute("type", "button")
             editbutton.setAttribute("class", "addbutton")
