@@ -17,17 +17,16 @@
             </div>
             <div class="projectmenu">
                 <h1>Current Projects</h1>
-                <div class="projectwrapper">
-                    <button type="button" class="projectbutton" id="project0">Make Task Tracker</button>
-                    <button type="button" class="deletebutton">X</button>
+                <div class="projects" id="projects">
+                    
                 </div>
-                <button type="button" class="addbutton">Add project</button>
+                <button type="button" class="addbutton" id="addprojectbutton">Add project</button>
             </div>
         </div>
         <div class="alltasksmenu">
             <div class="taskheader">
                 <h1>All tasks</h1>
-                <button type="button" id="addbutton" class="addbutton">Add a task</button>
+                <button type="button" id="addtaskbutton" class="addbutton">Add a task</button>
             </div>
             <div class="taskwrapper" id="taskwrapper">
             </div>
@@ -50,7 +49,17 @@
                     </div>
                     <div class="formbtnwrapper">
                         <button type="submit" id="confirmformbtn" class="addbutton">Confirm</button>
-                        <button type="button" id="closeformbtn" class="closebutton">Close</button>
+                        <button type="button" id="closetaskformbtn" class="closebutton">Close</button>
+                    </div>
+                </form>
+            </div>
+            <div class="form-popup" id="addprojectform">
+                <form class="addprojectform">
+                    <label for="projectname">Project Title</label>
+                    <input type="text" id="projectname" name="projectname">
+                    <div class="formbtnwrapper">
+                        <button type="submit" id="confirmformbtn" class="addbutton">Confirm</button>
+                        <button type="button" id="closeprojectformbtn" class="closebutton">Close</button>
                     </div>
                 </form>
             </div>

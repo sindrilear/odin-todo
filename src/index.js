@@ -1,6 +1,8 @@
 import "./styles.css";
 import { addTask } from "./addTasks";
 import { renderTasks } from "./renderTasks";
+import { addProject } from "./addProject";
+import { renderProjects } from "./addProject";
 
 // Get the users current page
 export function getCurrentPage() {
@@ -9,10 +11,12 @@ export function getCurrentPage() {
 
 // Get tasks based on which page the user is currently on
 export function getTasks() {
-    const currentPage = getCurrentPage();
     return JSON.parse(localStorage.getItem("Tasks")) || [];
 }
 
+export function getProjects() {
+    return JSON.parse(localStorage.getItem("Projects")) || [];
+}
 // Sets the user's current page to desired page
 export function navigateTo(page) {
     sessionStorage.setItem("currentPage", page);
@@ -20,6 +24,7 @@ export function navigateTo(page) {
 
 // Global variable for current tasks
 export const tasks = getTasks();
+export const projects = getProjects();
 
 navigateTo("Home");
 
@@ -29,29 +34,45 @@ console.log("Current Page (state.js):", getCurrentPage());
 console.log(tasks);
 
 // Form handling
-const formDialog = document.getElementById("addbutton")
-const closeForm = document.getElementById("closeformbtn")
-const projectBtn = document.getElementById("project0")
+const taskDialog = document.getElementById("addtaskbutton")
+const closetaskForm = document.getElementById("closetaskformbtn")
 
-// Open form to add a new task when add task button is pressed
-formDialog.addEventListener("click", () => {
+const closeprojectForm = document.getElementById("closeprojectformbtn")
+const projectDialog = document.getElementById("addprojectbutton")
+//const projectBtn = document.getElementById("project")
+
+// Task form
+taskDialog.addEventListener("click", () => {
     document.getElementById("addtaskform").style.display = "flex";
 });
     
-closeForm.addEventListener("click", () =>  {
+closetaskForm.addEventListener("click", () =>  {
     document.getElementById("addtaskform").style.display = "none";
 });
 
-projectBtn.addEventListener("click", () => {
-    navigateTo("project0");
-    renderTasks(tasks, false);
+// Project form
+projectDialog.addEventListener("click", () => {
+    document.getElementById("addprojectform").style.display = "flex";
 });
     
+closeprojectForm.addEventListener("click", () =>  {
+    document.getElementById("addprojectform").style.display = "none";
+});
+
+// When the project button is pressed, it navigates to that page and renders the tasks for that project
+//projectBtn.addEventListener("click", () => {
+  //  navigateTo("Home");
+   // renderTasks(tasks, false);
+//});
+    
 // When add task form confirmation button is pressed, run addTask function
-const form = document.getElementById("addtaskform");
-form.addEventListener('submit', addTask);
+const taskForm = document.getElementById("addtaskform");
+taskForm.addEventListener('submit', addTask);
+
+const projectForm = document.getElementById("addprojectform");
+projectForm.addEventListener('submit', addProject);
 
 renderTasks(tasks, true);
-
+renderProjects(projects);
 
 
