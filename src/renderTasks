@@ -1,0 +1,63 @@
+import { getCurrentPage } from ".";
+
+export function renderTasks(taskArray, isHome) {
+    const taskwrapper = document.querySelector("#taskwrapper")
+    taskwrapper.innerHTML = "";
+    let page = getCurrentPage();
+    for (let i = 0; i < taskArray.length; i++) {
+        if (taskArray[i].page == page || isHome)
+            {
+            // Create a task and assign it an id
+            const taskdiv = document.createElement("div")
+            taskdiv.setAttribute("class", "task")
+            taskdiv.setAttribute("name", `${taskArray[i].page}`)
+            taskdiv.setAttribute("id", `${i}`)
+            taskwrapper.appendChild(taskdiv);
+
+            // Create div for task name and delete button
+            const tasknamewrapper = document.createElement("div")
+            tasknamewrapper.setAttribute("class", "tasknamewrapper")
+            taskdiv.appendChild(tasknamewrapper)
+            const taskname = document.createElement("h3")
+            taskname.setAttribute("class", "taskname")
+            taskname.innerHTML = `${taskArray[i].taskname}`
+            tasknamewrapper.appendChild(taskname)
+            const deletebutton = document.createElement("button")
+            deletebutton.setAttribute("class", "deletebutton");
+            deletebutton.innerHTML = "X"
+            tasknamewrapper.appendChild(deletebutton);
+
+            // Add Description, Due date, Priority
+            const taskdescription = document.createElement("p")
+            taskdescription.setAttribute("class", "taskdescription")
+            taskdescription.innerHTML = `Description: ${taskArray[i].taskdescription}`
+            const duedate = document.createElement("p")
+            duedate.setAttribute ("class", "duedate")
+            duedate.innerHTML = `Due by: ${taskArray[i].duedate}`
+            const priority = document.createElement("p")
+            priority.setAttribute("class", "priority")
+            priority.innerHTML = `Priority: ${taskArray[i].priority}`
+            taskdiv.appendChild(taskdescription)
+            taskdiv.appendChild(duedate)
+            taskdiv.appendChild(priority)
+
+            // Add checkbox and delete button
+            const checkboxdiv = document.createElement("div")
+            taskdiv.appendChild(checkboxdiv)
+            const checkbox = document.createElement("input")
+            checkbox.setAttribute("type", "checkbox")
+            checkbox.setAttribute("name", `complete${i}`)
+            checkbox.setAttribute("id", `complete${i}`)
+            const checkboxlabel = document.createElement("label")
+            checkboxlabel.setAttribute("for", `complete${i}`)
+            checkboxlabel.innerHTML = "This task has been completed"
+            checkboxdiv.appendChild(checkbox)
+            checkboxdiv.appendChild(checkboxlabel)
+            const editbutton = document.createElement("button")
+            editbutton.setAttribute("type", "button")
+            editbutton.setAttribute("class", "addbutton")
+            editbutton.innerHTML = "Edit"
+            taskdiv.appendChild(editbutton)
+        }
+    }
+}

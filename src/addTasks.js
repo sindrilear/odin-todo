@@ -1,3 +1,6 @@
+import { renderTasks } from "./renderTasks";
+import {  getCurrentPage, tasks } from "."
+
 class Task {
     constructor(taskname, taskdescription, duedate, priority) {
     this.taskname = taskname;
@@ -5,14 +8,11 @@ class Task {
     this.duedate = duedate;
     this.priority = priority;
     this.completed = false;
+    this.page = "";
     }
 }
 
-const task0 = new Task("Make Task Tracker", "Make Task Tracker website", "19/01/2025", "High")
-const task1 = new Task("Finish javascript module", "Do javascript exercises", "28/01/2025", "Medium")
-export const tasks = [task0, task1];
-
-// Get values from form
+// Get values that user types into form
 export function addTask(event) {
     event.preventDefault();
     let taskName = document.getElementById("taskname").value;
@@ -26,9 +26,14 @@ export function addTask(event) {
     form.reset();
 }
 
-// Create new task and push to array
+// Render the new task, based on which project is open
 function createTask(taskname, taskdescription, duedate, priority) {
-    const createTask = new Task(`${taskname}, ${taskdescription}, ${duedate}, ${priority}`);
+    const createTask = new Task(`${taskname}`, `${taskdescription}`, `${duedate}`, `${priority}`);
+    let currentPage = getCurrentPage();
+    createTask.page = currentPage;
     tasks.push(createTask);
+    let taskArrayStringified = JSON.stringify(tasks);
     console.log(tasks);
+    localStorage.setItem("Tasks", taskArrayStringified);
+    renderTasks(tasks);
 }
