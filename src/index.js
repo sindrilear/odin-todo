@@ -68,7 +68,9 @@ taskDialog.addEventListener("click", () => {
 });
     
 closetaskForm.addEventListener("click", () =>  {
+    let form = document.querySelector("#addtaskform form");
     document.getElementById("addtaskform").style.display = "none";
+    form.reset();
 });
 
 // Project form

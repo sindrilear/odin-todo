@@ -26,9 +26,9 @@ export function renderTasks(taskArray, isHome) {
             tasknamewrapper.appendChild(taskname)
             const deletebutton = document.createElement("button")
             deletebutton.setAttribute("class", "deletebutton");
-            deletebutton.setAttribute("id", "deletebutton");
             deletebutton.addEventListener("click", (event) => {
                 deleteElement(tasks, i, "task");
+                localStorage.removeItem(`task_${i}_checked`);
                 renderTasks(tasks, true)
             })
             deletebutton.innerHTML = "X"
@@ -63,15 +63,37 @@ export function renderTasks(taskArray, isHome) {
             checkbox.addEventListener("change", () => {
                 if (checkbox.checked) {
                     taskdiv.style.backgroundColor = "green";
+                    localStorage.setItem(`task_${i}_checked`, "true");
                 } else {
                     taskdiv.style.backgroundColor = "#3C3D37";
+                    localStorage.setItem(`task_${i}_checked`, "false");
                 }
             })
+
+            const savedState = localStorage.getItem(`task_${i}_checked`);
+            if (savedState === "true") {
+                checkbox.checked = true;
+                taskdiv.style.backgroundColor = "green";
+            } else {
+                checkbox.checked = false;
+                taskdiv.style.backgroundColor = "#3C3D37";
+            }
 
             const editbutton = document.createElement("button")
             editbutton.setAttribute("type", "button")
             editbutton.setAttribute("class", "addbutton")
             editbutton.innerHTML = "Edit"
+            editbutton.addEventListener("click", () => {
+                const taskIndex = i;
+                // Repopulate form with this tasks values and display it
+                document.getElementById("taskname").value = taskArray[i].taskname;
+                document.getElementById("taskdescription").value = taskArray[i].taskdescription;
+                document.getElementById("duedate").value = taskArray[i].duedate;
+                document.querySelector(`input[name="priority"][value="${taskArray[i].priority}"]`).checked = true;
+                document.getElementById("taskEdit").value = taskIndex;
+
+                document.getElementById("addtaskform").style.display = "flex";
+            })
             taskdiv.appendChild(editbutton)
         }
     }

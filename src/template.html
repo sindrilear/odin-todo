@@ -12,7 +12,6 @@
                 <h1>Task Tracker</h1>
                 <div class="taskmenubuttons">
                     <button type="button" class="projectbutton" id="alltasksbutton">All tasks</button>
-                    <button type="button" class="projectbutton">Completed tasks</button>
                 </div>
             </div>
             <div class="projectmenu">
@@ -32,15 +31,16 @@
             </div>
             <div class="form-popup" id="addtaskform">
                 <form class="addtaskform">
+                    <input type="hidden" id="taskEdit" value="">
                     <label for="taskname">Name of task</label>
-                    <input type="text" id="taskname" name="taskname">
+                    <input type="text" id="taskname" name="taskname" required>
                     <label for="taskdescription">Describe the task</label>
-                    <input type="text" id="taskdescription" name="taskdescription">
+                    <input type="text" id="taskdescription" name="taskdescription" required>
                     <label for="duedate">Due date</label>
-                    <input type="date" id="duedate" name="duedate">
+                    <input type="date" id="duedate" name="duedate" required>
                     <label>Task priority level</label>
                     <div class="radiowrapper">
-                        <input type="radio" id="low" name="priority" value="Low">
+                        <input type="radio" id="low" name="priority" value="Low" checked>
                         <label for="low">Low</label>
                         <input type="radio" id="medium" name="priority" value="Medium">
                         <label for="medium">Medium</label>
