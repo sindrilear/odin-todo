@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Tracker</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div class="pagewrapper">
+        <div class="tasktracker">
+            <div class="taskmenu">
+                <h1>Task Tracker</h1>
+                <div class="taskmenubuttons">
+                    <button type="button" class="projectbutton" id="alltasksbutton">All tasks</button>
+                </div>
+            </div>
+            <div class="projectmenu">
+                <h1>Current Projects</h1>
+                <div class="projects" id="projects">
+                    
+                </div>
+                <button type="button" class="addbutton" id="addprojectbutton">Add project</button>
+            </div>
+        </div>
+        <div class="alltasksmenu">
+            <div class="taskheader">
+                <h1>All tasks</h1>
+                <button type="button" id="addtaskbutton" class="addbutton">Add a task</button>
+            </div>
+            <div class="taskwrapper" id="taskwrapper">
+            </div>
+            <div class="form-popup" id="addtaskform">
+                <form class="addtaskform">
+                    <input type="hidden" id="taskEdit" value="">
+                    <label for="taskname">Name of task</label>
+                    <input type="text" id="taskname" name="taskname" required>
+                    <label for="taskdescription">Describe the task</label>
+                    <input type="text" id="taskdescription" name="taskdescription" required>
+                    <label for="duedate">Due date</label>
+                    <input type="date" id="duedate" name="duedate" required>
+                    <label>Task priority level</label>
+                    <div class="radiowrapper">
+                        <input type="radio" id="low" name="priority" value="Low" checked>
+                        <label for="low">Low</label>
+                        <input type="radio" id="medium" name="priority" value="Medium">
+                        <label for="medium">Medium</label>
+                        <input type="radio" id="high" name="priority" value="High">
+                        <label for="high">High</label>
+                    </div>
+                    <div class="formbtnwrapper">
+                        <button type="submit" id="confirmformbtn" class="addbutton">Confirm</button>
+                        <button type="button" id="closetaskformbtn" class="closebutton">Close</button>
+                    </div>
+                </form>
+            </div>
+            <div class="form-popup" id="addprojectform">
+                <form class="addprojectform">
+                    <label for="projectname">Project Title</label>
+                    <input type="text" id="projectname" name="projectname">
+                    <div class="formbtnwrapper">
+                        <button type="submit" id="confirmformbtn" class="addbutton">Confirm</button>
+                        <button type="button" id="closeprojectformbtn" class="closebutton">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
